@@ -8,6 +8,9 @@
 
 The idea is to have a clean and easy to use dmenu menu to do some basic image manupulation using ImageMagic on the output of [Flameshot](https://flameshot.org).
 
+**To see what it does, check out the [actions](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md).**
+
+-------
 
 ## Dependencies
 
