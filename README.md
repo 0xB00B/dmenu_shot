@@ -12,6 +12,12 @@ This script expects the user to have the following softwares installed:
 - xclip
 - make (This is only a dependency for automatic installation)
 
+If you have the `make` installed, you can check what dependencies are installed and which ones are missing using:
+
+```sh
+make check
+```
+
 ## Installation
 
 ### Automatic Installation
@@ -60,6 +66,14 @@ gunzip --keep dmenu_shot-master.tar.gz
 ```sh
 cd dmenu_shot
 cp dmenu_shot.sh ~/.local/bin/dmenu_shot
+```
+
+## Uninstall
+
+If you have automatically installed `dmenu_shot`, you can easily remove/uninstall it automatically as well:
+
+```sh
+make remove
 ```
 
 ## Commands
