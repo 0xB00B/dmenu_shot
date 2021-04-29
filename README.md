@@ -1,7 +1,11 @@
 <h1 align="center">dmenu_shot</h1>
 <p align="center">
   <a href="https://codeberg.org/mehrad/dmenu_shot">
+<<<<<<< HEAD
     <img alt="dmenu_shot screenshot" src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/menu_screenshot.png"/>
+=======
+    <img alt="Gitea" src="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/assets/menu_screenshot.png"/>
+>>>>>>> 819906a35aadb1618ff18641c7e3397c07239878
   </a>
 </p>
 
