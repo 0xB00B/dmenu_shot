@@ -1,4 +1,10 @@
-# dmenu_shot
+<h1 align="center">dmenu_shot</h1>
+<p align="center">
+  <a href="https://codeberg.org/mehrad/dmenu_shot">
+    <img alt="dmenu_shot screenshot" src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/menu_screenshot.png"/>
+  </a>
+</p>
+
 
 The idea is to have a clean and easy to use dmenu menu to do some basic image manupulation using ImageMagic on the output of [Flameshot](https://flameshot.org).
 
