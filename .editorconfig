@@ -1,0 +1,17 @@
+# For syntax, check EditorConfig website: https://EditorConfig.org
+
+root = true
+
+# Force GitHub to display tabs
+# mixed with [4] spaces properly.
+[*]
+indent_style = space
+indent_size  = 4
+charset = utf-8
+insert_final_newline = true
+
+[{Makefile}]
+indent_style = tab
+indent_size  = 4
+insert_final_newline = true
+
