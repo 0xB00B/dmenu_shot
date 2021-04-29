@@ -37,7 +37,8 @@ case $RET in
         flameshot gui -r \
             | convert png:- -trim png:- \
             | xclip -selection clipboard -t image/png;;
-    Remove_white) flameshot gui -r \
+    Remove_white)
+        flameshot gui -r \
             | convert png:- -transparent white -fuzz 90% png:- \
             | xclip -selection clipboard -t image/png;;
     Negative) 
