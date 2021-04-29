@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $1 == --help ]] || [[ $1 == -h ]]; then
+if [[ "${1}" == "--help" ]] || [[ "${1}" == "-h" ]] || [[ "${1}" == "help" ]]; then
     cat << 'EOF'
 dmenu_shot provides a menu with set of custom commands to
 perform some simple automated image manipulation on screenshots
