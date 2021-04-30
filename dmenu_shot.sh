@@ -34,24 +34,24 @@ RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nCancel" | dmenu -i -fn "U
 
 case $RET in
     Trim)
-        flameshot gui -r \
+        flameshot gui --raw \
             | convert png:- -trim png:- \
-            | xclip -selection clipboard -t image/png
+            | xclip -selection clipboard -target image/png
         ;;
     Remove_white)
-        flameshot gui -r \
+        flameshot gui --raw \
             | convert png:- -transparent white -fuzz 90% png:- \
-            | xclip -selection clipboard -t image/png
+            | xclip -selection clipboard -target image/png
         ;;
     Negative) 
-        flameshot gui -r \
+        flameshot gui --raw \
             | convert png:- -negate -channel RGB png:- \
-            | xclip -selection clipboard -t image/png
+            | xclip -selection clipboard -target image/png
         ;;
     Bordered)
-        flameshot gui -r \
+        flameshot gui --raw \
             | convert png:- -bordercolor red -border 3 png:- \
-            | xclip -selection clipboard -t image/png
+            | xclip -selection clipboard -target image/png
         ;;
 	*) ;;
 esac
