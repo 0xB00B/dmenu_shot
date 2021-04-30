@@ -2,13 +2,14 @@
 
 if [[ "${1}" == "--help" ]] || [[ "${1}" == "-h" ]] || [[ "${1}" == "help" ]]; then
     cat << 'EOF'
+
 dmenu_shot provides a menu with set of custom commands to
 perform some simple automated image manipulation on screenshots
 taken using Flameshot, and then putting them into clipboard.
 
 
 Commands:
-    -h  --help: To show this help
+    -h, --help    To show this help
 
 
 Menu:
