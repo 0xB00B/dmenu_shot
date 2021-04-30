@@ -9,23 +9,29 @@
 ## Trim
 
 <p align="center">
-    <img src="../assets/trim.png" alt="Demo of trimming" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="../assets/trim.jpg" alt="Demo of trimming" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
 ## Remove_white
 
 <p align="center">
-    <img src="../assets/remove_white.png" alt="Demo of removing white background" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="../assets/remove_white.jpg" alt="Demo of removing white background" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
 ## Negative
 
 <p align="center">
-    <img src="../assets/negative.png" alt="Demo of changing the colors to negative" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="../assets/negative.jpg" alt="Demo of changing the colors to negative" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
+-------
+## Bordered
+
+<p align="center">
+    <img src="../assets/bordered.jpg" alt="Demo of adding border" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+</p>
 
 -------
 
