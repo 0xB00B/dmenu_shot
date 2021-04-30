@@ -17,6 +17,20 @@ The actions it can do:
 
 To see what it does, check out **the [actions](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md).**
 
+-------
+
+## Table of Content
+- [How to use](#how-to-use)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+    - [Automatic Installation](#automatic-installation)
+    - [Manual installation](#manual-installation)
+- [Uninstall](#uninstall)
+- [Commands](#commands)
+- [Contribution](#contribution)
+
+-------
+
 ## How to use
 
 After installation (which is basically copying [a shell file](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/dmenu_shot.sh) to your PATH), you can either use the `dmenu_shot` command in terminal or bind this command to a keyboard shortcut. If you don't know how, click on your Desktop Environment:
@@ -41,6 +55,8 @@ If you have the `make` installed, you can check what dependencies are installed 
 ```sh
 make check
 ```
+
+-------
 
 ## Installation
 
@@ -70,7 +86,7 @@ make install
 
 This will install the dmenu_shot to `~/.local/bin` (so it will NOT install it system-wise and will be only installed for the current user). This makes the command `dmenu_shot` be usable in your terminal. All you need to do is to close your terminal and open it again and run `dmenu_shot`. 
 
-### Manual installation
+### Manual Installation
 
 1. Clone this repo or download and extract the zip file
 
@@ -92,6 +108,8 @@ cd dmenu_shot
 cp dmenu_shot.sh ~/.local/bin/dmenu_shot
 ```
 
+-------
+
 ## Uninstall
 
 If you have automatically installed `dmenu_shot`, you can easily remove/uninstall it automatically as well:
@@ -100,10 +118,13 @@ If you have automatically installed `dmenu_shot`, you can easily remove/uninstal
 make remove
 ```
 
+-------
+
 ## Commands
 
 This is a dmenu script and user does not need to insteract with it using the command line, but just in case, a very short help is available using `--help` or `-h`.
 
+-------
 
 ## Contribution
 
