@@ -32,3 +32,17 @@ To create an example image:
 8. To keep the checkerboard pattern, use the trim function of `dmenu_shot` and select the whole canvas (it is better to select larger area as the `dmenu_shot` will trim the extra space)
 9. Create a new file and paste the screenshot in it
 10. Save the image you created in step 9 as PNG.
+
+
+## Git Commits
+
+- For your commits please use these tags in the begining of the commit message:
+    - `[fix]` to indicate this commit is fixing an issue/bug/shortfall
+    - `[add]` to indicate this commit is adding a new feature/file/documentation/context/typo
+    - `[update]` to indicate this commit is updating 
+    - `[style]` to indicate that this commit is improving aesthetically the code/documentation/images. This does not `[fix]` or `[add]` anything
+- Use newline if one commit is doing more than one thing. For example
+    > ```sh
+    > git commit -m "[fix] a bug that was causing the computer to freeze
+    > [add] documentation was added to explain how to recover from possible freeze"
+    > ```
