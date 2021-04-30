@@ -30,20 +30,27 @@ EOF
 fi
 
 
-RET=$(echo -e "Trim\nRemove_white\nNegative\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
+RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
 
 case $RET in
     Trim)
         flameshot gui -r \
             | convert png:- -trim png:- \
-            | xclip -selection clipboard -t image/png;;
+            | xclip -selection clipboard -t image/png
+        ;;
     Remove_white)
         flameshot gui -r \
             | convert png:- -transparent white -fuzz 90% png:- \
-            | xclip -selection clipboard -t image/png;;
+            | xclip -selection clipboard -t image/png
+        ;;
     Negative) 
         flameshot gui -r \
             | convert png:- -negate -channel RGB png:- \
+            | xclip -selection clipboard -t image/png
+        ;;
+    Bordered)
+        flameshot gui -r \
+            | convert png:- -bordercolor red -border 3 png:- \
             | xclip -selection clipboard -t image/png
         ;;
 	*) ;;
