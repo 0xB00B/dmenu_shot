@@ -17,6 +17,14 @@ The actions it can do:
 
 To see what it does, check out **the [actions](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md).**
 
+## How to use
+
+After installation (which is basically copying [a shell file](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/dmenu_shot.sh) to your PATH), you can either use the `dmenu_shot` command in terminal or bind this command to a keyboard shortcut. If you don't know how, click on your Desktop Environment:
+
+- [KDE](https://userbase.kde.org/Tutorials/hotkeys)
+- [Xfce](https://docs.xfce.org/xfce/xfce4-settings/keyboard)
+- [Gnome](https://help.gnome.org/users/gnome-help/stable/keyboard-shortcuts-set.html.en)
+
 -------
 
 ## Dependencies
