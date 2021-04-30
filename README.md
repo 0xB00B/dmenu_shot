@@ -10,10 +10,10 @@ The idea is to have a clean and easy to use dmenu menu to do some basic image ma
 
 The actions it can do:
 
-- **Trim** the extra white space from around the screenshot
-- **Remove_white** background and make it transparent
-- **Negative** the colors
-- **Bordered** the screenshot with 3 pixel-wide read line
+- <span style="background-color:Orange;color:Black;"><strong>Trim</strong></span> the extra white space from around the screenshot
+- <span style="background-color:Orange;color:Black;"><strong>Remove_white</strong></span> background and make it transparent
+- <span style="background-color:Orange;color:Black;"><strong>Negative</strong></span> the colors
+- <span style="background-color:Orange;color:Black;"><strong>Bordered</strong></span> the screenshot with 3 pixel-wide read line
 
 To see what it does, check out **the [actions](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md).**
 
