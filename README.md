@@ -103,3 +103,8 @@ make remove
 ## Commands
 
 This is a dmenu script and user does not need to insteract with it using the command line, but just in case, a very short help is available using `--help` or `-h`.
+
+
+## Contribution
+
+To prevent this page to get lengthy, I moved the content of this part to [contribute page](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/contribute.md).
