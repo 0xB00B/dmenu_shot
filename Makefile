@@ -11,7 +11,7 @@ SHELL = /bin/sh
 REQUIRED_BINS := xclip flameshot dmenu convert
 
 # define the path dmenu_shot should be installed
-PREFIX ?= .local/bin
+PREFIX ?= ${HOME}/.local/bin
 
 # define a newline character to be used in messages
 define LINEBREAK
@@ -34,7 +34,7 @@ check:
 
 install: check
 	cp ./dmenu_shot.sh ./dmenu_shot
-#	install --target "${PREFIX}" -D -m755 dmenu_shot
-#	rm ./dmenu_shot
+	install --target "${PREFIX}" -D -m755 dmenu_shot
+	rm ./dmenu_shot
 
 
