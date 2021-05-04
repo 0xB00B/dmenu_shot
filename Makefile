@@ -22,19 +22,21 @@ endef
 
 .PHONY: install
 
-all:
+all: 
 	$(info To install type "make install", and to uninstall type "make remove")
-
+#	to suppress the "make: 'all' is up to date." message
+	@:
 
 check:
 #	checking if the dependencies are me# checking if the dependencies are mett
 	$(foreach bin,$(REQUIRED_BINS),\
     	$(if $(shell command -v $(bin) 2> /dev/null),$(info [Ok] Found `$(bin)`),$(error ${LINEBREAK}[Error] Missing Dependency. Please install `$(bin)`)))
+	@:
 
 
 install: check
 	cp ./dmenu_shot.sh ./dmenu_shot
 	install --target "${PREFIX}" -D -m755 dmenu_shot
 	rm ./dmenu_shot
-
+	@:
 
