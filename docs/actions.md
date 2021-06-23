@@ -9,28 +9,28 @@
 ## Trim
 
 <p align="center">
-    <img src="../assets/trim.jpg" alt="Demo of trimming" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/trim.jpg" alt="Demo of trimming" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
 ## Remove_white
 
 <p align="center">
-    <img src="../assets/remove_white.jpg" alt="Demo of removing white background" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/remove_white.jpg" alt="Demo of removing white background" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
 ## Negative
 
 <p align="center">
-    <img src="../assets/negative.jpg" alt="Demo of changing the colors to negative" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/negative.jpg" alt="Demo of changing the colors to negative" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
 ## Bordered
 
 <p align="center">
-    <img src="../assets/bordered.jpg" alt="Demo of adding border" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+    <img src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/bordered.jpg" alt="Demo of adding border" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
 </p>
 
 -------
