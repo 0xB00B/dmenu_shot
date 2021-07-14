@@ -28,10 +28,11 @@ To create an example image:
 4. Use the `dmenu_shot` function you want to make example for on the top part of the image (make sure you are completely selecting the entire picture with it's white background)
 5. Paste the screenshot to the new layer you created at step 2
 6. Move the image you pasted down until it gets very close to the bottom border
-7. Save the file
-8. To keep the checkerboard pattern, use the trim function of `dmenu_shot` and select the whole canvas (it is better to select larger area as the `dmenu_shot` will trim the extra space)
-9. Create a new file and paste the screenshot in it
-10. Save the image you created in step 9 as PNG.
+7. Rename the layer to match the function name
+8. Save the file
+9. To keep the checkerboard pattern, use the trim function of `dmenu_shot` and select the whole canvas (it is better to select larger area as the `dmenu_shot` will trim the extra space)
+10. Create a new file and paste the screenshot in it
+11. Save the image you created in step 9 as JPG (all in lower case and replace all spaces with _).
 
 
 ## Git Commits
