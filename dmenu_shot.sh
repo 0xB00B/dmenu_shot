@@ -32,7 +32,12 @@ EOF
 fi
 
 
-RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
+function get_input(){
+    echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "${1}:"
+}
+
+
+RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
 
 case $RET in
     Trim)
@@ -53,6 +58,12 @@ case $RET in
     Bordered)
         flameshot gui --raw \
             | convert png:- -bordercolor red -border 3 png:- \
+            | xclip -selection clipboard -target image/png
+        ;;
+    Scaled)
+        tmp_size=$(get_input "input resize value (e.g 75% or 200x300)");
+        flameshot gui -r \
+            | convert png:- -resize ${tmp_size} png:- \
             | xclip -selection clipboard -target image/png
         ;;
 	*) ;;

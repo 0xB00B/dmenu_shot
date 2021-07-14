@@ -34,6 +34,13 @@
 </p>
 
 -------
+## Scaled
+
+<p align="center">
+    <img src="https://codeberg.org/mehrad/dmenu_shot/raw/branch/main/assets/scaled.jpg" alt="Demo of scaling the screenshot" width="300px" loading="lazy" style="vertical-align:bottom;background-color:#383c4a;margin:3px">
+</p>
+
+-------
 
 Author information for [the image used for creating the examples](https://commons.wikimedia.org/wiki/File:Scheme_cat_anatomy.svg):
 
