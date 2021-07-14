@@ -18,6 +18,7 @@ Menu:
     Remove_white: Useful to remove the white background. It will
                    replace white with transparent.
     Negative:     Convert the image to negative colors.
+    Bordered:     Add border around the captured screenshot.
 
 
 Author:
