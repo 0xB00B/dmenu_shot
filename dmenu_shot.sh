@@ -13,12 +13,16 @@ Commands:
 
 
 Menu:
-    Trim:         It just trims the extra spaces around the
-                   selected region.
-    Remove_white: Useful to remove the white background. It will
-                   replace white with transparent.
-    Negative:     Convert the image to negative colors.
-    Bordered:     Add border around the captured screenshot.
+    Trim:          It just trims the extra spaces around the
+                    selected region.
+    Remove_white:  Useful to remove the white background. It will
+                    replace white with transparent.
+    Negative:      Convert the image to negative colors.
+    Bordered:      Add border around the captured screenshot.
+    Scaled:        Resize the screenshot either by percentage
+                    (e.g 75%) or specific dimention (e.g 200x300).
+    Select_Window: Waits for user to select a window, then take
+                    screenshot of it.
 
 
 Author:
@@ -37,7 +41,7 @@ function get_input(){
 }
 
 
-RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
+RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nSelect_Window\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
 
 case $RET in
     Trim)
@@ -65,6 +69,50 @@ case $RET in
         flameshot gui -r \
             | convert png:- -resize ${tmp_size} png:- \
             | xclip -selection clipboard -target image/png
+        ;;
+    Select_Window)
+        # get the window ID
+        TMP_WINDOW_ID=$(xdotool selectwindow)
+        
+        
+    
+        unset WINDOW X Y WIDTH HEIGHT SCREEN
+        # eval $(xdotool selectwindow getwindowgeometry --shell)
+        eval $(xdotool getwindowgeometry --shell "${TMP_WINDOW_ID}")
+        
+        # Put the window in focus
+        xdotool windowfocus --sync "${TMP_WINDOW_ID}"
+        sleep 0.05
+        
+        # run flameshot in gui mode
+        flameshot gui
+        
+        # wait until flameshot is loaded
+        while true
+        do
+            if [ "$(xdotool search --onlyvisible --class flameshot)" = "" ]
+            then
+                sleep 0.05
+            else
+                sleep 0.05
+                break
+            fi
+        done
+        
+        #xdotool mousemove 0 0
+        xdotool mousemove --sync $X $Y
+        sleep 0.05
+        # click and hold
+        xdotool mousedown 1
+        sleep 0.05
+        # a hacky way to move 1 px tp make the dragging initiated
+        xdotool mousemove_relative --sync 1 1
+        xdotool mousemove_relative --sync $WIDTH $HEIGHT
+        sleep 0.05
+        # release mouse click
+        xdotool mouseup 1
+        sleep 0.05
+        xdotool key ctrl+c
         ;;
 	*) ;;
 esac
