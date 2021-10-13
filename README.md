@@ -10,11 +10,11 @@ The idea is to have a clean and easy to use dmenu menu to do some basic image ma
 
 The actions it can do:
 
-- <span style="background-color:Orange;color:Black;"><strong>Trim</strong></span> the extra white space from around the screenshot
-- <span style="background-color:Orange;color:Black;"><strong>Remove_white</strong></span> background and make it transparent
-- <span style="background-color:Orange;color:Black;"><strong>Negative</strong></span> the colors
-- <span style="background-color:Orange;color:Black;"><strong>Bordered</strong></span> the screenshot with 3 pixel-wide read line
-- <span style="background-color:Orange;color:Black;"><strong>Scaled</strong></span> the screenshot based on the provided percentage (e.g 75%) or to specific dimension (e.g 200x300)
+- <a href="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md#trim"><span style="background-color:Orange;color:Black;"><strong>Trim</strong></span></a> the extra white space from around the screenshot
+- <a href="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md#remove_white"><span style="background-color:Orange;color:Black;"><strong>Remove_white</strong></span></a> background and make it transparent
+- <a href="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md#negative"><span style="background-color:Orange;color:Black;"><strong>Negative</strong></span></a> the colors
+- <a href="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md#bordered"><span style="background-color:Orange;color:Black;"><strong>Bordered</strong></span></a> the screenshot with 3 pixel-wide read line
+- <a href="https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/actions.md#scaled"><span style="background-color:Orange;color:Black;"><strong>Scaled</strong></span></a> the screenshot based on the provided percentage (e.g 75%) or to specific dimension (e.g 200x300)
 - <span style="background-color:Orange;color:Black;"><strong>Select_Window</strong></span> let the user choose a window, and then it will take screenshot specifically of that window.
 
 All the outputs are copied to clipboard by default.
