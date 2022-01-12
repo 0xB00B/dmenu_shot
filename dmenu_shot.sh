@@ -67,7 +67,7 @@ case $RET in
     Scaled)
         tmp_size=$(get_input "input resize value (e.g 75% or 200x300)");
         flameshot gui -r \
-            | convert png:- -resize ${tmp_size} png:- \
+            | convert png:- -resize "${tmp_size}" png:- \
             | xclip -selection clipboard -target image/png
         ;;
     Select_Window)
@@ -100,14 +100,14 @@ case $RET in
         done
         
         #xdotool mousemove 0 0
-        xdotool mousemove --sync $X $Y
+        xdotool mousemove --sync "${X}" "${Y}"
         sleep 0.05
         # click and hold
         xdotool mousedown 1
         sleep 0.05
         # a hacky way to move 1 px tp make the dragging initiated
         xdotool mousemove_relative --sync 1 1
-        xdotool mousemove_relative --sync $WIDTH $HEIGHT
+        xdotool mousemove_relative --sync "${WIDTH}" "${HEIGHT}"
         sleep 0.05
         # release mouse click
         xdotool mouseup 1
