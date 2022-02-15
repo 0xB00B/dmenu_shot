@@ -84,35 +84,9 @@ case $RET in
         xdotool windowfocus --sync "${TMP_WINDOW_ID}"
         sleep 0.05
         
-        # run flameshot in gui mode
-        flameshot gui
+        # run flameshot in gui mode in the desired coordinates
+        flameshot gui --region "${WIDTH}x${HEIGHT}+${X}+${Y}"
         
-        # wait until flameshot is loaded
-        while true
-        do
-            if [ "$(xdotool search --onlyvisible --class flameshot)" = "" ]
-            then
-                sleep 0.05
-            else
-                sleep 0.05
-                break
-            fi
-        done
-        
-        #xdotool mousemove 0 0
-        xdotool mousemove --sync "${X}" "${Y}"
-        sleep 0.05
-        # click and hold
-        xdotool mousedown 1
-        sleep 0.05
-        # a hacky way to move 1 px tp make the dragging initiated
-        xdotool mousemove_relative --sync 1 1
-        xdotool mousemove_relative --sync "${WIDTH}" "${HEIGHT}"
-        sleep 0.05
-        # release mouse click
-        xdotool mouseup 1
-        sleep 0.05
-        xdotool key ctrl+c
         ;;
 	*) ;;
 esac
