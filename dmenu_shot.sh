@@ -65,10 +65,14 @@ case $RET in
             | xclip -selection clipboard -target image/png
         ;;
     Scaled)
-        tmp_size=$(get_input "input resize value (e.g 75% or 200x300)");
-        flameshot gui -r \
-            | convert png:- -resize "${tmp_size}" png:- \
-            | xclip -selection clipboard -target image/png
+        tmp_size=$(func_get_input "input resize value (e.g 75% or 200x300)");
+
+        if [[ -n "${tmp_size}" ]]
+        then
+            flameshot gui -r \
+                | convert png:- -resize "${tmp_size}" png:- \
+                | xclip -selection clipboard -target image/png
+        fi
         ;;
     Select_Window)
         # get the window ID
