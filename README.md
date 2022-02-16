@@ -153,6 +153,16 @@ make remove
 
 This is a dmenu script and user does not need to insteract with it using the command line, but just in case, a very short help is available using `--help` or `-h`.
 
+There is also a small `help` available for the `make` which can be seen using `make help` and will output the following:
+
+```
+Available arguments:
+- "make install" to install
+- "make remove"  to uninstall (remove)
+- "make check"   to check if you have all dependencies installed
+- "make help"    to show this help
+```
+
 -------
 
 ## Contribution
