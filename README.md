@@ -29,6 +29,7 @@ To see what it does, check out **the [actions](https://codeberg.org/mehrad/dmenu
 - [Installation](#installation)
     - [Automatic Installation](#automatic-installation)
     - [Manual installation](#manual-installation)
+- [Configuration](#configuration)
 - [Uninstall](#uninstall)
 - [Commands](#commands)
 - [Contribution](#contribution)
@@ -74,7 +75,9 @@ When you have installed all the dependencies, simply do:
 # To clone the repo
 git clone https://codeberg.org/mehrad/dmenu_shot.git 
 ```
+
 OR
+
 ```sh
 # To download the ZIP file
 wget https://codeberg.org/mehrad/dmenu_shot/archive/master.tar.gz
@@ -98,7 +101,9 @@ This will install the dmenu_shot to `~/.local/bin` (so it will NOT install it sy
 # To clone the repo
 git clone https://codeberg.org/mehrad/dmenu_shot.git 
 ```
+
 OR
+
 ```sh
 # To download the ZIP file
 wget https://codeberg.org/mehrad/dmenu_shot/archive/master.tar.gz
@@ -111,6 +116,26 @@ gunzip --keep dmenu_shot-master.tar.gz
 cd dmenu_shot
 cp dmenu_shot.sh ~/.local/bin/dmenu_shot
 ```
+
+-------
+
+## Configuration
+
+`dmenu_shot` can be configured using a simple TOML file. The default path would be `~/.config/dmenushot/config.toml` but you can set a environment variable named `DMENU_SHOT_CONF_PATH` to overwrite the default path and point the `dmenu_shot` to a custom file.
+
+Until this version we accept a section named `[colors]` which can have the custom color values of the dmenu as shown below. You do not need to define all of them. You can also use comments and empty lines in the config file.
+
+``` toml
+# Anything after # is considered comment
+
+[colors]
+normal_foreground = "#ff6600"
+normal_background = "#8501a7"
+selection_foreground = "#ffcc00"
+selection_background = "#fa0164"
+```
+
+If there is something unexpected in the config file, you will see some error messages to help you fix the issue.
 
 -------
 

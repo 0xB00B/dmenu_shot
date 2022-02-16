@@ -1,7 +1,62 @@
 #!/usr/bin/env bash
 
-if [[ "${1}" == "--help" ]] || [[ "${1}" == "-h" ]] || [[ "${1}" == "help" ]]; then
-    cat << 'EOF'
+#-------[ internal functions ]-------#
+{
+    # a function to get custom value as input. Gets one string as input to be used as message
+    function func_get_input(){
+        echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
+                -nb "${colors_normal_background}" \
+                -nf "${colors_normal_foreground}" \
+                -sb "${colors_selection_background}" \
+                -sf "${colors_selection_foreground}" \
+                -p "${1}:"
+    }
+
+    # a function to read and parse config file. the input should be tha path to the config file
+    function func_parse_config(){
+        local line section key value
+        local regex_empty="^[[:blank:]]*$"
+        local regex_comment="^[[:blank:]]*#"
+        local regex_section="^[[:blank:]]*\[([[:alpha:]][[:alnum:]]*)\][[:blank:]]*$"
+        local regex_keyval="^[[:blank:]]*([[:alpha:]_][[:alnum:]_]*)[[:blank:]]*=[[:blank:]]*[\"\']?([^\"\']*)[\"\']?"
+
+        # read the lines line-by-line and create variables using the config
+        while IFS='= ' read -r line
+        do
+            # skip if the line is empty
+            [[ "${line}" =~ ${regex_empty} ]] && continue
+            # skip if the line is comment
+            [[ "${line}" =~ ${regex_comment} ]] && continue
+            # if the line matches regex for section
+            if [[ "${line}" =~ ${regex_section} ]]
+            then
+                section="${BASH_REMATCH[1]}"
+                # echo "section=${section}"
+            # if the line matches regex for key-value pair
+            elif [[ "${line}" =~ ${regex_keyval} ]]
+            then
+                key="${BASH_REMATCH[1]}"
+                value="${BASH_REMATCH[2]}"
+                # echo "${key} = ${value}"
+            # if the line does not match any of the above
+            else
+                echo "The following line in config is invalid:"
+                echo "${line}"
+            fi
+
+            # create varible synamically using the combination of section and key
+            declare -g "${section}_${key}"="${value}"
+
+        done < "${1}"
+    }
+}
+
+
+#-------[ argument parsing ]-------#
+{
+    if [[ "${1}" == "--help" ]] || [[ "${1}" == "-h" ]] || [[ "${1}" == "help" ]]
+    then
+        cat << 'EOF'
 
 dmenu_shot provides a menu with set of custom commands to
 perform some simple automated image manipulation on screenshots
@@ -32,16 +87,45 @@ Author:
 Git repository for bug report and contributions:
     https://codeberg.org/mehrad/dmenu_shot
 EOF
-    exit 0
-fi
-
-
-function get_input(){
-    echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "${1}:"
+        exit 0
+    fi
 }
 
 
-RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nSelect_Window\nCancel" | dmenu -i -fn "UbuntuMono Nerd Font:size=11" -nb "#222222" -nf "#ff7824" -sb "#ff7824" -sf "#222222" -p "Select screenshot type:")
+#-------[ load config ]-------#
+{
+    ## define the colors so that we have something to fallback to
+    colors_normal_foreground="#ff6600"
+    colors_normal_background="#8501a7"
+    colors_selection_foreground="#ffcc00"
+    colors_selection_background="#fa0164"
+
+    # get the config path from environmental variable, otherwise fall back to ~/.config/dmenu_shot/config.toml
+    if [[ -v DMENU_SHOT_CONF_PATH ]]
+    then
+        CONF_PATH="${DMENU_SHOT_CONF_PATH}"
+    else
+        CONF_PATH="${HOME}/.config/dmenu_shot/config.toml"
+    fi
+
+    # if the config file do exist
+    if [[ -f "${CONF_PATH}" ]]
+    then
+        func_parse_config "${CONF_PATH}"
+    else
+        echo "The config file was not found in ${CONF_PATH}"
+        echo "Falling back to some defaults!"
+    fi
+}
+
+
+RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nSelect_Window\nCancel" \
+    | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
+        -nb "${colors_normal_background}" \
+        -nf "${colors_normal_foreground}" \
+        -sb "${colors_selection_background}" \
+        -sf "${colors_selection_foreground}" \
+        -p "Select screenshot type:")
 
 case $RET in
     Trim)
