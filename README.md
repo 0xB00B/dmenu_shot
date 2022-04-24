@@ -49,11 +49,11 @@ After installation (which is basically copying [a shell file](https://codeberg.o
 ## Dependencies
 
 This script expects the user to have the following softwares installed:
-- Flameshot
-- dmenu (it can be custom built but should be available in the PATH)
-- ImageMagic (specifically the `convert` command
-- xclip
-- make (This is only a dependency for automatic installation)
+- [Flameshot](https://flameshot.org/)
+- [dmenu](https://tools.suckless.org/dmenu/) (it can be custom built but should be available in the PATH)
+- [ImageMagic](https://imagemagick.org/) (specifically the `convert` command)
+- [xclip](https://github.com/astrand/xclip)
+- [make](https://www.gnu.org/software/make/) (This is only a dependency for automatic installation)
 
 If you have the `make` installed, you can check what dependencies are installed and which ones are missing using:
 
