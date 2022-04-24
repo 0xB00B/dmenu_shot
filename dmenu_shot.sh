@@ -108,6 +108,15 @@ EOF
             config_colors_selection_foreground="#ffcc00"
             config_colors_selection_background="#fa0164"
         }
+        
+        
+        #-------[ action - Bordered ]-------#
+        {
+            config_action_bordered_line_color="LightGray"
+            config_action_bordered_line_thickness=2
+            config_action_bordered_corner_radius=7
+        }
+    }
     
     
     #-------[ read config file ]-------#
@@ -158,9 +167,18 @@ case $RET in
             | xclip -selection clipboard -target image/png
         ;;
     Bordered)
-        flameshot gui --raw \
-            | convert png:- -bordercolor red -border 3 png:- \
-            | xclip -selection clipboard -target image/png
+	    flameshot gui --raw \
+        | convert png:- \
+            -format "roundrectangle 4,3 %[fx:w+0],%[fx:h+0] ${config_action_bordered_corner_radius},${config_action_bordered_corner_radius}" \
+            -write info:tmp.mvg \
+            -alpha set -bordercolor "${config_action_bordered_line_color}" -border ${config_action_bordered_line_thickness} \
+            \( +clone -alpha transparent -background none \
+                -fill white -stroke none -strokewidth 0 -draw @tmp.mvg \) \
+            -compose DstIn -composite \
+            \( +clone -alpha transparent -background none \
+                -fill none -stroke "${config_action_bordered_line_color}" -strokewidth ${config_action_bordered_line_thickness} -draw @tmp.mvg \) \
+            -compose Over -composite png:- \
+	    | xclip -selection clipboard -target image/png
         ;;
     Scaled)
         tmp_size=$(func_get_input "input resize value (e.g 75% or 200x300)");
