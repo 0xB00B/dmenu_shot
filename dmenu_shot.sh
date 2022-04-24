@@ -2,7 +2,8 @@
 
 #-------[ internal functions ]-------#
 {
-    # a function to get custom value as input. Gets one string as input to be used as message
+    # a function to get custom value as input. Gets one string as input to be
+    # used as message.
     function func_get_input(){
         echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
                 -nb "${colors_normal_background}" \
@@ -12,7 +13,8 @@
                 -p "${1}:"
     }
 
-    # a function to read and parse config file. the input should be tha path to the config file
+    # a function to read and parse config file. the input should be tha path to
+    # the config file.
     function func_parse_config(){
         local line section key value
         local regex_empty="^[[:blank:]]*$"
@@ -94,28 +96,40 @@ EOF
 
 #-------[ load config ]-------#
 {
-    ## define the colors so that we have something to fallback to
-    colors_normal_foreground="#ff6600"
-    colors_normal_background="#8501a7"
-    colors_selection_foreground="#ffcc00"
-    colors_selection_background="#fa0164"
+    #-------[ default values for config ]-------#
+    ## define some default config so that we have something to fallback to if
+    ## the user didn't have any config file.
+    {
+        #-------[ UI ]-------#
+        ## stuff for look and feel of the user interface
+        {
+            config_colors_normal_foreground="#ff6600"
+            config_colors_normal_background="#8501a7"
+            config_colors_selection_foreground="#ffcc00"
+            config_colors_selection_background="#fa0164"
+        }
+    
+    
+    #-------[ read config file ]-------#
+    {
+        # get the config path from environmental variable, otherwise fall back to
+        # the ~/.config/dmenu_shot/config.toml
+        if [[ -v DMENU_SHOT_CONF_PATH ]]
+        then
+            CONF_PATH="${DMENU_SHOT_CONF_PATH}"
+        else
+            CONF_PATH="${HOME}/.config/dmenu_shot/config.toml"
+        fi
 
-    # get the config path from environmental variable, otherwise fall back to ~/.config/dmenu_shot/config.toml
-    if [[ -v DMENU_SHOT_CONF_PATH ]]
-    then
-        CONF_PATH="${DMENU_SHOT_CONF_PATH}"
-    else
-        CONF_PATH="${HOME}/.config/dmenu_shot/config.toml"
-    fi
-
-    # if the config file do exist
-    if [[ -f "${CONF_PATH}" ]]
-    then
-        func_parse_config "${CONF_PATH}"
-    else
-        echo "The config file was not found in ${CONF_PATH}"
-        echo "Falling back to some defaults!"
-    fi
+        # if the config file do exist
+        if [[ -f "${CONF_PATH}" ]]
+        then
+            func_parse_config "${CONF_PATH}"
+        else
+            echo "The config file was not found in ${CONF_PATH}"
+            echo "Falling back to some defaults!"
+        fi
+    }
 }
 
 
