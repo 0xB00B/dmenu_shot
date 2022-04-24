@@ -6,10 +6,10 @@
     # used as message.
     function func_get_input(){
         echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
-                -nb "${colors_normal_background}" \
-                -nf "${colors_normal_foreground}" \
-                -sb "${colors_selection_background}" \
-                -sf "${colors_selection_foreground}" \
+                -nb "${config_colors_normal_background}" \
+                -nf "${config_colors_normal_foreground}" \
+                -sb "${config_colors_selection_background}" \
+                -sf "${config_colors_selection_foreground}" \
                 -p "${1}:"
     }
 
@@ -47,7 +47,7 @@
             fi
 
             # create varible synamically using the combination of section and key
-            declare -g "${section}_${key}"="${value}"
+            declare -g "config_${section}_${key}"="${value}"
 
         done < "${1}"
     }
@@ -135,10 +135,10 @@ EOF
 
 RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nSelect_Window\nCancel" \
     | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
-        -nb "${colors_normal_background}" \
-        -nf "${colors_normal_foreground}" \
-        -sb "${colors_selection_background}" \
-        -sf "${colors_selection_foreground}" \
+        -nb "${config_colors_normal_background}" \
+        -nf "${config_colors_normal_foreground}" \
+        -sb "${config_colors_selection_background}" \
+        -sf "${config_colors_selection_foreground}" \
         -p "Select screenshot type:")
 
 case $RET in
