@@ -121,7 +121,7 @@ cp dmenu_shot.sh ~/.local/bin/dmenu_shot
 
 ## Configuration
 
-`dmenu_shot` can be configured using a simple TOML file. The default path would be `~/.config/dmenushot/config.toml` but you can set a environment variable named `DMENU_SHOT_CONF_PATH` to overwrite the default path and point the `dmenu_shot` to a custom file.
+`dmenu_shot` can be configured using a simple TOML file. The default path would be `~/.config/dmenu_shot/config.toml` but you can set a environment variable named `DMENU_SHOT_CONF_PATH` to overwrite the default path and point the `dmenu_shot` to a custom file.
 
 Until this version we accept a section named `[colors]` which can have the custom color values of the dmenu as shown below. You do not need to define all of them. You can also use comments and empty lines in the config file.
 
