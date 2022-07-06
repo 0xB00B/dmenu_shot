@@ -33,6 +33,7 @@ To see what it does, check out **the [actions](https://codeberg.org/mehrad/dmenu
 - [Uninstall](#uninstall)
 - [Commands](#commands)
 - [Contribution](#contribution)
+- [Getting help](#getting-help)
 
 -------
 
@@ -49,11 +50,13 @@ After installation (which is basically copying [a shell file](https://codeberg.o
 ## Dependencies
 
 This script expects the user to have the following softwares installed:
-- [Flameshot](https://flameshot.org/)
-- [dmenu](https://tools.suckless.org/dmenu/) (it can be custom built but should be available in the PATH)
-- [ImageMagic](https://imagemagick.org/) (specifically the `convert` command)
-- [xclip](https://github.com/astrand/xclip)
-- [make](https://www.gnu.org/software/make/) (This is only a dependency for automatic installation)
+- [Flameshot](https://flameshot.org/): The screenshotting tool.
+- [dmenu](https://tools.suckless.org/dmenu/): The menu system itself. It can be custom built but should be available in the PATH.
+- [ImageMagic](https://imagemagick.org/): A software for image manupulation. This is specifically used in `dmenu_shot` for the `convert` command.
+- [xclip](https://github.com/astrand/xclip): Clipboard manager
+- [xdotool](https://github.com/jordansissel/xdotool) a command-line X11 automation tool. It is used for letting us selecting the window with mouse.
+- [make](https://www.gnu.org/software/make/): This is only a dependency for automatic installation and dependency checking.
+- [bash](https://www.gnu.org/software/bash/): The `dmenu_shot` is written in bash.
 
 If you have the `make` installed, you can check what dependencies are installed and which ones are missing using:
 
@@ -181,3 +184,9 @@ Available arguments:
 ## Contribution
 
 To prevent this page to get lengthy, I moved the content of this part to [contribute page](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/contribute.md).
+
+-------
+
+# Getting help
+
+If you have any questions or need help, feel free to [open a new issue](https://codeberg.org/mehrad/dmenu_shot/issues/new). Just make sure you give me as much information as you can so that I can help you easier and give you exactly what you need. 
