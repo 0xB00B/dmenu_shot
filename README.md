@@ -49,11 +49,11 @@ After installation (which is basically copying [a shell file](https://codeberg.o
 ## Dependencies
 
 This script expects the user to have the following softwares installed:
-- Flameshot
-- dmenu (it can be custom built but should be available in the PATH)
-- ImageMagic (specifically the `convert` command
-- xclip
-- make (This is only a dependency for automatic installation)
+- [Flameshot](https://flameshot.org/)
+- [dmenu](https://tools.suckless.org/dmenu/) (it can be custom built but should be available in the PATH)
+- [ImageMagic](https://imagemagick.org/) (specifically the `convert` command)
+- [xclip](https://github.com/astrand/xclip)
+- [make](https://www.gnu.org/software/make/) (This is only a dependency for automatic installation)
 
 If you have the `make` installed, you can check what dependencies are installed and which ones are missing using:
 
@@ -121,7 +121,7 @@ cp dmenu_shot.sh ~/.local/bin/dmenu_shot
 
 ## Configuration
 
-`dmenu_shot` can be configured using a simple TOML file. The default path would be `~/.config/dmenushot/config.toml` but you can set a environment variable named `DMENU_SHOT_CONF_PATH` to overwrite the default path and point the `dmenu_shot` to a custom file.
+`dmenu_shot` can be configured using a simple TOML file. The default path would be `~/.config/dmenu_shot/config.toml` but you can set a environment variable named `DMENU_SHOT_CONF_PATH` to overwrite the default path and point the `dmenu_shot` to a custom file.
 
 Until this version we accept a section named `[colors]` which can have the custom color values of the dmenu as shown below. You do not need to define all of them. You can also use comments and empty lines in the config file.
 
@@ -136,6 +136,19 @@ selection_background = "#fa0164"
 ```
 
 If there is something unexpected in the config file, you will see some error messages to help you fix the issue.
+
+For some tools you can configure some of the default settings through the same config file. For every configurable action, you can create a section with the name format `[action_{action_name}]`. For instance, for the "Bordered" you can have:
+
+``` toml
+[action_bordered]
+line_color = "#ff0066"
+line_thickness = 2
+corner_radius = 7
+```
+
+List of configurable actions:
+
+- Bordered
 
 -------
 

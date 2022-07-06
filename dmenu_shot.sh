@@ -2,17 +2,19 @@
 
 #-------[ internal functions ]-------#
 {
-    # a function to get custom value as input. Gets one string as input to be used as message
+    # a function to get custom value as input. Gets one string as input to be
+    # used as message.
     function func_get_input(){
         echo | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
-                -nb "${colors_normal_background}" \
-                -nf "${colors_normal_foreground}" \
-                -sb "${colors_selection_background}" \
-                -sf "${colors_selection_foreground}" \
+                -nb "${config_colors_normal_background}" \
+                -nf "${config_colors_normal_foreground}" \
+                -sb "${config_colors_selection_background}" \
+                -sf "${config_colors_selection_foreground}" \
                 -p "${1}:"
     }
 
-    # a function to read and parse config file. the input should be tha path to the config file
+    # a function to read and parse config file. the input should be tha path to
+    # the config file.
     function func_parse_config(){
         local line section key value
         local regex_empty="^[[:blank:]]*$"
@@ -45,7 +47,7 @@
             fi
 
             # create varible synamically using the combination of section and key
-            declare -g "${section}_${key}"="${value}"
+            declare -g "config_${section}_${key}"="${value}"
 
         done < "${1}"
     }
@@ -94,37 +96,58 @@ EOF
 
 #-------[ load config ]-------#
 {
-    ## define the colors so that we have something to fallback to
-    colors_normal_foreground="#ff6600"
-    colors_normal_background="#8501a7"
-    colors_selection_foreground="#ffcc00"
-    colors_selection_background="#fa0164"
+    #-------[ default values for config ]-------#
+    ## define some default config so that we have something to fallback to if
+    ## the user didn't have any config file.
+    {
+        #-------[ UI ]-------#
+        ## stuff for look and feel of the user interface
+        {
+            config_colors_normal_foreground="#ff6600"
+            config_colors_normal_background="#8501a7"
+            config_colors_selection_foreground="#ffcc00"
+            config_colors_selection_background="#fa0164"
+        }
+        
+        
+        #-------[ action - Bordered ]-------#
+        {
+            config_action_bordered_line_color="LightGray"
+            config_action_bordered_line_thickness=2
+            config_action_bordered_corner_radius=7
+        }
+    }
+    
+    
+    #-------[ read config file ]-------#
+    {
+        # get the config path from environmental variable, otherwise fall back to
+        # the ~/.config/dmenu_shot/config.toml
+        if [[ -v DMENU_SHOT_CONF_PATH ]]
+        then
+            CONF_PATH="${DMENU_SHOT_CONF_PATH}"
+        else
+            CONF_PATH="${HOME}/.config/dmenu_shot/config.toml"
+        fi
 
-    # get the config path from environmental variable, otherwise fall back to ~/.config/dmenu_shot/config.toml
-    if [[ -v DMENU_SHOT_CONF_PATH ]]
-    then
-        CONF_PATH="${DMENU_SHOT_CONF_PATH}"
-    else
-        CONF_PATH="${HOME}/.config/dmenu_shot/config.toml"
-    fi
-
-    # if the config file do exist
-    if [[ -f "${CONF_PATH}" ]]
-    then
-        func_parse_config "${CONF_PATH}"
-    else
-        echo "The config file was not found in ${CONF_PATH}"
-        echo "Falling back to some defaults!"
-    fi
+        # if the config file do exist
+        if [[ -f "${CONF_PATH}" ]]
+        then
+            func_parse_config "${CONF_PATH}"
+        else
+            echo "The config file was not found in ${CONF_PATH}"
+            echo "Falling back to some defaults!"
+        fi
+    }
 }
 
 
 RET=$(echo -e "Trim\nRemove_white\nNegative\nBordered\nScaled\nSelect_Window\nCancel" \
     | dmenu -i -fn "UbuntuMono Nerd Font:size=11" \
-        -nb "${colors_normal_background}" \
-        -nf "${colors_normal_foreground}" \
-        -sb "${colors_selection_background}" \
-        -sf "${colors_selection_foreground}" \
+        -nb "${config_colors_normal_background}" \
+        -nf "${config_colors_normal_foreground}" \
+        -sb "${config_colors_selection_background}" \
+        -sf "${config_colors_selection_foreground}" \
         -p "Select screenshot type:")
 
 case $RET in
@@ -144,9 +167,18 @@ case $RET in
             | xclip -selection clipboard -target image/png
         ;;
     Bordered)
-        flameshot gui --raw \
-            | convert png:- -bordercolor red -border 3 png:- \
-            | xclip -selection clipboard -target image/png
+	    flameshot gui --raw \
+        | convert png:- \
+            -format "roundrectangle 4,3 %[fx:w+0],%[fx:h+0] ${config_action_bordered_corner_radius},${config_action_bordered_corner_radius}" \
+            -write info:tmp.mvg \
+            -alpha set -bordercolor "${config_action_bordered_line_color}" -border ${config_action_bordered_line_thickness} \
+            \( +clone -alpha transparent -background none \
+                -fill white -stroke none -strokewidth 0 -draw @tmp.mvg \) \
+            -compose DstIn -composite \
+            \( +clone -alpha transparent -background none \
+                -fill none -stroke "${config_action_bordered_line_color}" -strokewidth ${config_action_bordered_line_thickness} -draw @tmp.mvg \) \
+            -compose Over -composite png:- \
+	    | xclip -selection clipboard -target image/png
         ;;
     Scaled)
         tmp_size=$(func_get_input "input resize value (e.g 75% or 200x300)");

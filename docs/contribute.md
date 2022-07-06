@@ -2,6 +2,8 @@
 
 The contributions should be fun, so I give you freedom and only set very few rules for aesthetics and consistency.
 
+If you don't know how to create a Pull Request (PR), click [here](https://codeberg.org/mehrad/dmenu_shot/src/branch/main/docs/how_to_make_PR.md)
+
 
 ## Code
 
