@@ -8,7 +8,7 @@
 SHELL = /bin/sh
 
 # define a variable to store the dependencies
-REQUIRED_BINS := xclip flameshot dmenu convert
+REQUIRED_BINS := sh bash xclip flameshot dmenu convert
 
 # define the path dmenu_shot should be installed
 PREFIX ?= ${HOME}/.local/bin
