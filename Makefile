@@ -35,7 +35,7 @@ check:
 #	checking if the dependencies are me# checking if the dependencies are mett
 	$(foreach bin,$(REQUIRED_BINS),\
 		$(if $(shell command -v $(bin) 2> /dev/null),$(info [Ok] Found `$(bin)`),$(error ${LINEBREAK}[Error] Missing Dependency. Please install `$(bin)`)))
-	@if [[ -f "${PREFIX}/dmenu_shot" ]]; then \
+	@if [ -f "${PREFIX}/dmenu_shot" ]; then \
 		echo "[NOTE] dmenu_shot is already installed"; \
 	else \
 		echo "[NOTE] dmenu_shot is NOT installed yet"; \
@@ -47,7 +47,7 @@ install: check
 	@cp ./dmenu_shot.sh ./dmenu_shot
 	install --target "${PREFIX}" -D -m755 dmenu_shot
 	@rm ./dmenu_shot
-	@if [[ -f "${PREFIX}/dmenu_shot" ]] ; then \
+	@if [ -f "${PREFIX}/dmenu_shot" ] ; then \
 		echo "[Ok] Successfully installed. Now you can use dmenu_shot as a command"; \
 	else \
 		echo "[Error] Pathetically failed to install"; \
@@ -55,10 +55,10 @@ install: check
 	@:
 
 remove uninstall:
-	@if [[ -f "${PREFIX}/dmenu_shot" ]]; then \
+	@if [ -f "${PREFIX}/dmenu_shot" ]; then \
 		echo "[Ok] Found the dmenu_shot. Going to remove ..."; \
 		rm "${PREFIX}/dmenu_shot"; \
-		if [[ -f "${PREFIX}/dmenu_shot" ]]; then \
+		if [ -f "${PREFIX}/dmenu_shot" ]; then \
 			echo "[Error] Pathetically failed to remove"; \
 		else \
 			echo "[Ok] Successfully removed)"; \
