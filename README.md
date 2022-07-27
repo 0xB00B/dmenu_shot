@@ -96,6 +96,10 @@ make install
 
 This will install the dmenu_shot to `~/.local/bin` (so it will NOT install it system-wise and will be only installed for the current user). This makes the command `dmenu_shot` be usable in your terminal. All you need to do is to close your terminal and open it again and run `dmenu_shot`. 
 
+#### AUR
+
+You can also install `dmenu_shot` by installing `dmenu_shot-git` with your preferred AUR helper.  
+
 ### Manual Installation
 
 1. Clone this repo or download and extract the zip file
